@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>ShinyApp for mtcars linear model training</title>
+  <meta charset="utf-8">
+  <meta name="description" content="ShinyApp for mtcars linear model training">
+  <meta name="author" content="Tiago Li">
+  <meta name="generator" content="slidify" />
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <link rel="stylesheet" href="libraries/frameworks/io2012/css/default.css" media="all" >
+  <link rel="stylesheet" href="libraries/frameworks/io2012/css/phone.css" 
+    media="only screen and (max-device-width: 480px)" >
+  <link rel="stylesheet" href="libraries/frameworks/io2012/css/slidify.css" >
+  <link rel="stylesheet" href="libraries/highlighters/highlight.js/css/tomorrow.css" />
+  <base target="_blank"> <!-- This amazingness opens all links in a new tab. -->  <link rel=stylesheet href="./assets/css/ribbons.css"></link>
+
+  
+  <!-- Grab CDN jQuery, fall back to local if offline -->
+  <script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.7.min.js"></script>
+  <script>window.jQuery || document.write('<script src="libraries/widgets/quiz/js/jquery.js"><\/script>')</script> 
+  <script data-main="libraries/frameworks/io2012/js/slides" 
+    src="libraries/frameworks/io2012/js/require-1.0.8.min.js">
+  </script>
+  
+  
+
+</head>
+<body style="opacity: 0">
+  <slides class="layout-widescreen">
+    
+    <!-- LOGO SLIDE -->
+        <slide class="title-slide segue nobackground">
+  <hgroup class="auto-fadein">
+    <h1>ShinyApp for mtcars linear model training</h1>
+    <h2></h2>
+    <p>Tiago Li<br/></p>
+  </hgroup>
+  <article></article>  
+</slide>
+    
+
+    <!-- SLIDES -->
+    <slide class="" id="slide-1" style="background:;">
+  <hgroup>
+    <h2>Motivation</h2>
+  </hgroup>
+  <article data-timings="">
+    <p>Remember in <em>Linear Regression</em> project we are asked to train a model to predict <code>mpg</code> based on <code>mtcars</code> dataset? </p>
+
+<pre><code class="r">data(mtcars)
+head(mtcars,3)
+</code></pre>
+
+<pre><code>##                mpg cyl disp  hp drat    wt  qsec vs am gear carb
+## Mazda RX4     21.0   6  160 110 3.90 2.620 16.46  0  1    4    4
+## Mazda RX4 Wag 21.0   6  160 110 3.90 2.875 17.02  0  1    4    4
+## Datsun 710    22.8   4  108  93 3.85 2.320 18.61  1  1    4    1
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="class" id="id" style="background:;">
+  <hgroup>
+    <h2>Linear model training in R</h2>
+  </hgroup>
+  <article data-timings="">
+    <p>It&#39;s very straight forward to train a model using predictor(s) from the dataset and plot the result in R Studio. However it&#39;s tedious to try out every combination and type them in command line. What if the user knows nothing about R?</p>
+
+<pre><code class="r">fit &lt;- lm(mpg~cyl,data=mtcars);
+plot(mpg~cyl,data=mtcars);abline(fit)
+</code></pre>
+
+<p><img src="assets/fig/unnamed-chunk-2-1.png" title="plot of chunk unnamed-chunk-2" alt="plot of chunk unnamed-chunk-2" style="display: block; margin: auto;" /></p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-3" style="background:;">
+  <hgroup>
+    <h2>Linear model training with ShinyApp</h2>
+  </hgroup>
+  <article data-timings="">
+    <p>My <a href="https://tiagolicanton.shinyapps.io/data_prod/">ShinyApp</a> provides an interactive way to</p>
+
+<ol>
+<li>to select/deselect predictors </li>
+<li>present trained model immediately</li>
+<li>record the best \(R^2\) so far</li>
+</ol>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-4" style="background:;">
+  <hgroup>
+    <h2>Usage</h2>
+  </hgroup>
+  <article data-timings="">
+    <p>The only input widget is the checkbox in the left side, play with it and the corresponding model will be calculated accordingly. The model with max \(R^2\) will be recorded in case you forget the best model so far. Lastly, please note that \(R^2_{max}\) is not the indicator of how good the model is. User should make a tradeoff between model precision and simplicity in his/her discretion. </p>
+
+<p><img src="image/screenshot.png" style="width: 800px;"/></p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+    <slide class="backdrop"></slide>
+  </slides>
+  <div class="pagination pagination-small" id='io2012-ptoc' style="display:none;">
+    <ul>
+      <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=1 title='Motivation'>
+         1
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=2 title='Linear model training in R'>
+         2
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=3 title='Linear model training with ShinyApp'>
+         3
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=4 title='Usage'>
+         4
+      </a>
+    </li>
+  </ul>
+  </div>  <!--[if IE]>
+    <script 
+      src="http://ajax.googleapis.com/ajax/libs/chrome-frame/1/CFInstall.min.js">  
+    </script>
+    <script>CFInstall.check({mode: 'overlay'});</script>
+  <![endif]-->
+</body>
+  <!-- Load Javascripts for Widgets -->
+  
+  <!-- MathJax: Fall back to local if CDN offline but local image fonts are not supported (saves >100MB) -->
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        inlineMath: [['$','$'], ['\\(','\\)']],
+        processEscapes: true
+      }
+    });
+  </script>
+  <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/2.0-latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  <!-- <script src="https://c328740.ssl.cf1.rackcdn.com/mathjax/2.0-latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+  </script> -->
+  <script>window.MathJax || document.write('<script type="text/x-mathjax-config">MathJax.Hub.Config({"HTML-CSS":{imageFont:null}});<\/script><script src="libraries/widgets/mathjax/MathJax.js?config=TeX-AMS-MML_HTMLorMML"><\/script>')
+</script>
+<!-- LOAD HIGHLIGHTER JS FILES -->
+  <script src="libraries/highlighters/highlight.js/highlight.pack.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
+  <!-- DONE LOADING HIGHLIGHTER JS FILES -->
+   
+  </html>
